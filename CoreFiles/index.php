@@ -21,8 +21,21 @@
 	foreach (glob("inc/content/main/inc.main.*.php") as $filename){
 		include $filename;
 	}
-
-	
+	foreach (glob("inc/content/spellingalphabet/inc.spellingalphabet.*.php") as $filename){
+		include $filename;
+	}
+	foreach (glob("inc/content/other/inc.other.*.php") as $filename){
+		include $filename;
+	}
+	foreach (glob("inc/content/aid/inc.aid.*.php") as $filename){
+		include $filename;
+	}
+	foreach (glob("inc/content/law/inc.law.*.php") as $filename){
+		include $filename;
+	}
+	foreach (glob("inc/content/function/inc.function.*.php") as $filename){
+		include $filename;
+	}
 	// Close html > body
 	print('</body>');
 ?>
