@@ -2,10 +2,9 @@
 	<ul data-role="listview">
 		<li data-icon="back"><a data-rel="close">Schliessen</a></li>
 		<li data-role="list-divider">Hauptfunktionen</li>
-		<li><a href="#aid-01-index">Gedächtnisstütze</a></li>
+		<li><a href="#aid-01-index">Hilfmittel</a></li>
 		<li><a href="#">Dosierer</a></li>
 		<li><a href="#">Pack Years Kalkulator</a></li>
-		<li data-role="list-divider">Informatives</li>
 		<li><a href="#spellingalphabet-01-index">Buchstabiertafel</a></li>
 		<li data-role="list-divider">Helfen</li>
 		<li data-icon="star"><a href="#other-02-sponsors">Sponsoren</a></li>

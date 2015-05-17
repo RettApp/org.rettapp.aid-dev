@@ -7,7 +7,7 @@
 		<h1>Einstellungen</h1>
 		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
 			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext">Einstellungen</a>
-			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext" data-transition="slidefade">Home</a>
+			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext" data-transition="pop">Home</a>
 		</div>
 	</div>
 	<div data-role="content" role="main" class="ui-content">

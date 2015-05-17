@@ -12,6 +12,7 @@
 	// This Part generate the index.html to use http://build.phonegap.com
 	// Include html > head
 	include('inc/core/inc.core.head.php');
+	include('inc/core/inc.core.variable.php');
 	// Open html > body
 	print('<body>');
 	

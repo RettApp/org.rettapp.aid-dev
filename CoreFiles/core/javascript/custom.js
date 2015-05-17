@@ -40,8 +40,8 @@ $(document).on("pageshow", function(event) {
 });
 
 
-$(document).on("pageinit", "#aid-01-index", function(){
-		$("#aid").listview({
+$(document).on("pageinit", function(){
+		$(".aid").listview({
 		    autodividers: true,
 		    autodividersSelector: function (li) {
 		        var out = li.attr('divider');

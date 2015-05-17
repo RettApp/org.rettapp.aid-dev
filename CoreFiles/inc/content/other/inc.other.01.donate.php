@@ -6,7 +6,7 @@
 		</div>
 		<h1>Buy Me a Beer</h1>
 		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
-			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="slidefade" data-direction="reverse">Einstellungen</a>
+			<a href="#function-02-settings" class="ui-btn ui-btn-icon-right ui-icon-gear ui-btn-icon-notext" data-transition="pop" data-direction="reverse">Einstellungen</a>
 			<a href="#main-02-index" class="ui-btn ui-btn-icon-right ui-icon-home ui-btn-icon-notext">Home</a>
 		</div>
 	</div>
