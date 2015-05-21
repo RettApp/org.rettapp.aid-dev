@@ -26,9 +26,13 @@
 		</form>
 		<ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-input="#inset-autocomplete-input" class="aid">
 			<?php
-				$results = $db->query("SELECT name, filtertext,divider,link FROM aid ORDER BY name");
+				$results = $db->query("SELECT t1.id,t1.title,t1.filtertext,t1.visual,t2.title as divider FROM aid_content AS t1, aid_categorie AS t2 WHERE t1.categorie = t2.uid ORDER BY t2.title, t1.title");
 				while ($inhalt = $results->fetchArray()) {
-					echo '<li divider="'.$inhalt['divider'].'" data-filtertext="'.$inhalt['filtertext'].'"><a href="'.$inhalt['link'].'">'.$inhalt['name'].'</a></li>';
+					if($inhalt['visual']==true){
+						echo '<li divider="'.$inhalt['divider'].'" data-filtertext="'.$inhalt['filtertext'].'"><a href="#'.$inhalt['id'].'">'.$inhalt['title'].'</a></li>';
+					}else{
+						echo '<li divider="'.$inhalt['divider'].'" data-filtertext="'.$inhalt['filtertext'].'">'.$inhalt['title'].'<span class="ui-li-count">nicht verfügbar</span></li>';
+					}
 				}
 			?>
 		</ul>

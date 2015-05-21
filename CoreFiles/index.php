@@ -15,14 +15,8 @@
 	include('inc/core/inc.core.variable.php');
 	// Open html > body
 	print('<body>');
-	
-	// Add some Code here to generate the file
-	
 	// Search for main content files an include
 	foreach (glob("inc/content/main/inc.main.*.php") as $filename){
-		include $filename;
-	}
-	foreach (glob("inc/content/spellingalphabet/inc.spellingalphabet.*.php") as $filename){
 		include $filename;
 	}
 	foreach (glob("inc/content/other/inc.other.*.php") as $filename){
@@ -36,6 +30,10 @@
 	}
 	foreach (glob("inc/content/function/inc.function.*.php") as $filename){
 		include $filename;
+	}
+	$results = $db->query("SELECT content.uid, content.id, content.title, content.bodytext, content.filtertext FROM aid_content AS content WHERE content.same_as is null");
+	while ($inhalt = $results->fetchArray()) {
+		create_page($inhalt['uid'], $inhalt['title'],$inhalt['filtertext'],$inhalt['bodytext']);
 	}
 	// Close html > body
 	print('</body>');
