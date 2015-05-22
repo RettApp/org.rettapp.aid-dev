@@ -38,8 +38,65 @@ $(document).on("pageshow", function(event) {
 		location.reload(true);
 	});
 });
-
-
+$(document).on("pageshow", "#aid-26", function(event) {
+	$("input").change(function() {
+	    unityLabel = $("#unity :radio:checked").attr('label');
+	    unityValue = $("#unity :radio:checked").val();
+	    agentAmount = $("#agent-amount").val();
+	    liquidAmount = $('#liquid-amount').val();
+	    unityPerKg = $('#unity-per-kg').val();
+	    patientWeight = $('#patient-weight').val();
+	    
+	    if(unityValue === '1'){
+	        results = '<b>'+agentAmount+unityLabel+" auf "+liquidAmount+" ml</b><br>";
+	        results += agentAmount*1000+'mg'+" auf "+liquidAmount+" ml<br>";
+	        results += agentAmount*1000000+'µg'+" auf "+liquidAmount+" ml";
+	        $('#doseResultsConditionDefinition').html(results);
+	    }else if(unityValue === '1000'){
+	        results = agentAmount/1000+"g"+" auf "+liquidAmount+" ml</b><br>";
+	        results += '<b>'+agentAmount+unityLabel+" auf "+liquidAmount+" ml</b><br>";
+	        results += agentAmount*1000+'µg'+" auf "+liquidAmount+" ml";
+	        $('#doseResultsConditionDefinition').html(results);
+	    }else if(unityValue === '1000000') {
+	        results = agentAmount/1000000+"g auf "+liquidAmount+" ml</b><br>";
+	        results += agentAmount/1000+"mg auf "+liquidAmount+" ml<br>";
+	        results += '<b>'+agentAmount+unityLabel+" auf "+liquidAmount+" ml<b>";
+	        $('#doseResultsConditionDefinition').html(results);
+	    }
+	    if(unityValue === '1'){
+	        results = '<b>'+agentAmount/liquidAmount+' '+unityLabel+'/ml</b><br>';
+	        results += agentAmount*1000/liquidAmount+' mg/ml<br>';
+	        results += agentAmount*1000000/liquidAmount+' µg/ml';
+	        $('#doseResultsCorrespondValue').html(results);
+	    }else if(unityValue === '1000'){
+	        results = agentAmount/1000/liquidAmount+' g/ml<br>';
+	        results += '<b>'+agentAmount/liquidAmount+' '+unityLabel+'/ml</b><br>';
+	        results += agentAmount*1000/liquidAmount+' µg/ml';
+	        $('#doseResultsCorrespondValue').html(results);
+	    }else if(unityValue === '1000000') {
+	        results = agentAmount/1000000/liquidAmount+' g/ml<br>';
+	        results += agentAmount/1000/liquidAmount+' mg/ml<br>';
+	        results += '<b>'+agentAmount/liquidAmount+' '+unityLabel+'/ml</b>';
+	        $('#doseResultsCorrespondValue').html(results);
+	    }
+	    if(unityValue === '1'){
+	        correspond = agentAmount*1000/liquidAmount;
+	        results = patientWeight*unityPerKg+' mg<br>';
+	        results += patientWeight*unityPerKg/correspond+' ml bei aktueller Dosis';
+	        $('#doseResultsDoseValue').html(results);
+	    }else if(unityValue === '1000'){
+	        correspond = agentAmount/liquidAmount;
+	        results = patientWeight*unityPerKg+' mg<br>';
+	        results += patientWeight*unityPerKg/correspond+' ml bei aktueller Dosis';
+	        $('#doseResultsDoseValue').html(results);
+	    }else if(unityValue === '1000000') {
+	        correspond = agentAmount/1000/liquidAmount;
+	        results = patientWeight*unityPerKg+' mg<br>';
+	        results += patientWeight*unityPerKg/correspond+' ml bei aktueller Dosis';
+	        $('#doseResultsDoseValue').html(results);
+	    }
+	});
+});
 $(document).on("pageinit", function(){
 		$(".aid").listview({
 		    autodividers: true,
