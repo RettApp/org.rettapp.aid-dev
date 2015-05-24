@@ -26,10 +26,14 @@
 		</form>
 		<ul data-role="listview" data-filter="true" data-filter-reveal="true" data-input="#inset-autocomplete-input" class="aid" data-inset="true">
 			<?php
-				$results = $db->query("SELECT t1.id,t1.title,t1.filtertext,t1.visual,t2.title as divider FROM aid_content AS t1, aid_categorie AS t2 WHERE t1.categorie = t2.uid ORDER BY t2.title, t1.title");
+				$results = $db->query("SELECT t1.id,t1.title,t1.filtertext,t1.visual,t1.same_as,t2.title as divider FROM aid_content AS t1, aid_categorie AS t2 WHERE t1.categorie = t2.uid ORDER BY t2.title, t1.title");
 				while ($inhalt = $results->fetchArray()) {
-					if($inhalt['visual']==true){
-						echo '<li divider="'.$inhalt['divider'].'" data-filtertext="'.$inhalt['filtertext'].'"><a href="#'.$inhalt['id'].'">'.$inhalt['title'].'</a></li>';
+					if($inhalt['visual'] == true){
+						if($inhalt['same_as'] != NULL) {
+							echo '<li divider="'.$inhalt['divider'].'" data-filtertext="'.$inhalt['filtertext'].'"><a href="#aid-'.$inhalt['same_as'].'">'.$inhalt['title'].'</a></li>';
+						} else {
+							echo '<li divider="'.$inhalt['divider'].'" data-filtertext="'.$inhalt['filtertext'].'"><a href="#aid-'.$inhalt['uid'].'">'.$inhalt['title'].'</a></li>';
+						}
 					}else{
 						echo '<li divider="'.$inhalt['divider'].'" data-filtertext="'.$inhalt['filtertext'].'">'.$inhalt['title'].'<span class="ui-li-count">nicht verfügbar</span></li>';
 					}
@@ -38,10 +42,21 @@
 		</ul>
 		<ul data-role="listview" data-inset="true">
 			<li data-role="list-divider">Hauptfunktionen</li>
-			<li><a href="#aid-01-index">Hilfsmittel</a></li>
-			<li><a href="#">Dosierer</a></li>
-			<li><a href="#">Pack Years Kalkulator</a></li>
-			<li><a href="#spellingalphabet-01-index">Buchstabiertafel</a></li>
+			<li><a href="#aid-01-index">Hilfsmittelliste</a></li>
+			<?php
+				$results = $db->query("SELECT t1.uid,t1.title,t1.visual,t1.same_as FROM aid_content AS t1 WHERE t1.fav is '1' ORDER BY t1.title");
+				while ($inhalt = $results->fetchArray()) {
+					if($inhalt['visual'] == true){
+						if($inhalt['same_as'] != NULL) {
+							echo '<li><a href="#aid-'.$inhalt['same_as'].'">'.$inhalt['title'].'</a></li>';
+						} else {
+							echo '<li><a href="#aid-'.$inhalt['uid'].'">'.$inhalt['title'].'</a></li>';
+						}
+					}else{
+						echo '<li>'.$inhalt['title'].'<span class="ui-li-count">nicht verfügbar</span></li>';
+					}
+				}
+			?>
 		</ul>
 		<p>
 			<a href="#law-01-imprint" class="ui-btn ui-corner-all ui-btn-icon-right ui-icon-info ui-shadow" data-rel='dialog'>Kontakt</a>
