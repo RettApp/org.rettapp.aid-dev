@@ -26,7 +26,7 @@
 		</form>
 		<ul data-role="listview" data-filter="true" data-filter-reveal="true" data-input="#inset-autocomplete-input" class="aid" data-inset="true">
 			<?php
-				$results = $db->query("SELECT t1.id,t1.title,t1.filtertext,t1.visual,t1.same_as,t2.title as divider FROM aid_content AS t1, aid_categorie AS t2 WHERE t1.categorie = t2.uid ORDER BY t2.title, t1.title");
+				$results = $db->query("SELECT t1.uid,t1.title,t1.filtertext,t1.visual,t1.same_as,t2.title as divider FROM aid_content AS t1, aid_categorie AS t2 WHERE t1.categorie = t2.uid ORDER BY t2.title, t1.title");
 				while ($inhalt = $results->fetchArray()) {
 					if($inhalt['visual'] == true){
 						if($inhalt['same_as'] != NULL) {
