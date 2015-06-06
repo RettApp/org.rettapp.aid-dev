@@ -20,10 +20,9 @@ function kaufrunden(zahl){
 	result = Math.round(zahl);
 	return result;
 }
-$(document).on("pageinit", function(event) {
-	panelAndListRefresh();
-});
+
 $(document).on("pageinit", function(){
+	panelAndListRefresh();
 	$(".aid").listview({
 	    autodividers: true,
 	    autodividersSelector: function (li) {
@@ -32,7 +31,7 @@ $(document).on("pageinit", function(){
 	    }
 	}).listview('refresh');
 });
-$(document).on("pagebeforecreate", "#main-01-disclaimer", function(event, ui) {
+$(document).on("pagebeforecreate", "#main-01-disclaimer", function() {
 	var settings = JSON.parse(localStorage.getItem('settings'));
 	if(settings.startdisclaimer == "1") {
 		$.mobile.changePage("#main-02-index");

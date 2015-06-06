@@ -4,34 +4,18 @@
 * the two frameworks.
 */
 var versionRettApp = "001";
-var gapReady = $.Deferred();
-var jqmReady = $.Deferred();
+var jqmReady = $.Deferred(), pgReady = $.Deferred();
 
-//Catch "deviceready" event which is fired when PhoneGap is ready
-document.addEventListener("deviceReady", deviceReady, false);
+document.addEventListener("deviceready", phonegapReady(), false);
 
-//Resolve gapReady in reponse to deviceReady event
-function deviceReady()
-{
-	gapReady.resolve();
+function phonegapReady(){
+	$(document).on( "mobileinit", function(){
+		myAppLogic();
+	});
 }
-
-/**
-* Catch "mobileinit" event which is fired when a jQueryMobile is loaded.
-* Ensure that we respond to this event only once.
-*/
-$(document).one("mobileinit", function(){
-	jqmReady.resolve();
-});
-
-/**
-* Run your App Logic only when both frameworks have loaded
-*/
-$.when(gapReady, jqmReady).then(myAppLogic);
 
 // App Logic
 function myAppLogic(){
-	alert('Works');
 	$(document).on('click', 'a', function (e){
 		var elem = $(this);
 		var url = elem.attr('href');
@@ -42,4 +26,5 @@ function myAppLogic(){
 		}
 	})
 }
+
 
