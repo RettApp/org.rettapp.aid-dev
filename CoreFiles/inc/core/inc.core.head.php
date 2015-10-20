@@ -19,7 +19,7 @@
 		if(isset($_GET['head'])){
 			switch($_GET['head']){
 				case 'cordova':
-					echo('<script src="core/javascript/app.js"></script><script type="text/javascript" src="js/plugins/LaunchMyApp.js"></script>');
+					echo('<script src="core/javascript/app.js"></script><script type="text/javascript" src="js/plugins/LaunchMyApp.js"></script><script type="text/javascript" src="js/plugins/wkwebview.js"></script>');
 					break;	
 			}
 		}
